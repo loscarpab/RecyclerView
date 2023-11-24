@@ -7,9 +7,13 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
@@ -57,9 +61,20 @@ fun SuperHeroView(){
     }
 
 }
+@Preview
+@Composable
+fun SuperHeroViewGrid(){
+    val context = LocalContext.current
+    LazyVerticalGrid(columns = GridCells.Adaptive(120.dp), contentPadding = PaddingValues(all=4.dp)) {
+        items(getSuperHeroes()) { superhero ->
+            ItemHero(superhero = superhero, onItemSelected = { makeToast(it.realName, context)})
+        }
+    }
+
+}
 @Composable
 fun ItemHero(superhero: Superhero, onItemSelected:(Superhero)->Unit){
-    Card(border = BorderStroke(2.dp, Color.Red), modifier = Modifier.fillMaxWidth()) {
+    Card(border = BorderStroke(2.dp, Color.Red), modifier = Modifier.fillMaxWidth().padding(4.dp)) {
         Image(
             painter = painterResource(id = superhero.photo),
             contentDescription = "SuperHero Avatar",
