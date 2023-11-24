@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.ccormor392.recyclerview"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.ccormor392.recyclerview"

@@ -1,3 +1,5 @@
 package com.ccormor392.recyclerview
 
-data class Superhero()
+import androidx.annotation.DrawableRes
+
+data class Superhero(val superheroName:String, val realName:String, val publisher:String, @DrawableRes var photo:Int)
